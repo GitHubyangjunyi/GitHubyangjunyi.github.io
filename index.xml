@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>浮生若梦</title>
+    <link>https://GitHubyangjunyi.github.io/</link>
+    <description>Recent content on 浮生若梦</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>1209032479@qq.com (杨俊艺)</managingEditor>
+    <webMaster>1209032479@qq.com (杨俊艺)</webMaster>
+    <lastBuildDate>Sat, 11 May 2019 13:27:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://GitHubyangjunyi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Operatingsystem临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/operatingsystem/operatingsystem%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:56 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/operatingsystem/operatingsystem%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/linux/linux%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:46 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/linux/linux%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/java/java%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:37 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/java/java%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gnu临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/gnu/gnu%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:29 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/gnu/gnu%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filesystem临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/filesystem/filesystem%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:19 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/filesystem/filesystem%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Datastructure临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/datastructure/datastructure%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:08 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/datastructure/datastructure%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compiler临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/compiler/compiler%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:26:52 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/compiler/compiler%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assembly临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/assembly/assembly%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:26:39 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/assembly/assembly%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Algorithm临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/algorithm/algorithm%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:26:21 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/algorithm/algorithm%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/web/web%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:22:41 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/web/web%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>计算机体系结构临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/computerarchitecture/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:13:24 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/computerarchitecture/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>计算机科学与技术路线</title>
+      <link>https://GitHubyangjunyi.github.io/about/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</link>
+      <pubDate>Sat, 11 May 2019 13:01:39 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/about/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/2019/05/11/%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:01:14 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/2019/05/11/%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>从汇编看指针和引用</title>
+      <link>https://GitHubyangjunyi.github.io/cplusplus/%E4%BB%8E%E6%B1%87%E7%BC%96%E7%9C%8B%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/</link>
+      <pubDate>Sat, 11 May 2019 12:59:37 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/cplusplus/%E4%BB%8E%E6%B1%87%E7%BC%96%E7%9C%8B%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

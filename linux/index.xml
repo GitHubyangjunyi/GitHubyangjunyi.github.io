@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linuxes on 浮生若梦</title>
+    <link>https://GitHubyangjunyi.github.io/linux/</link>
+    <description>Recent content in Linuxes on 浮生若梦</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>1209032479@qq.com (杨俊艺)</managingEditor>
+    <webMaster>1209032479@qq.com (杨俊艺)</webMaster>
+    <lastBuildDate>Sat, 11 May 2019 13:27:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://GitHubyangjunyi.github.io/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux临时文章</title>
+      <link>https://GitHubyangjunyi.github.io/linux/linux%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sat, 11 May 2019 13:27:46 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/linux/linux%E4%B8%B4%E6%97%B6%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
