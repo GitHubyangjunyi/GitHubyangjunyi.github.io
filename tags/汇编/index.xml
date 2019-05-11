@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>汇编 on 浮生若梦</title>
+    <link>https://GitHubyangjunyi.github.io/tags/%E6%B1%87%E7%BC%96/</link>
+    <description>Recent content in 汇编 on 浮生若梦</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>1209032479@qq.com (杨俊艺)</managingEditor>
+    <webMaster>1209032479@qq.com (杨俊艺)</webMaster>
+    <lastBuildDate>Sat, 11 May 2019 12:59:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://GitHubyangjunyi.github.io/tags/%E6%B1%87%E7%BC%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从汇编看指针和引用</title>
+      <link>https://GitHubyangjunyi.github.io/cplusplus/%E4%BB%8E%E6%B1%87%E7%BC%96%E7%9C%8B%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/</link>
+      <pubDate>Sat, 11 May 2019 12:59:37 +0800</pubDate>
+      <author>1209032479@qq.com (杨俊艺)</author>
+      <guid>https://GitHubyangjunyi.github.io/cplusplus/%E4%BB%8E%E6%B1%87%E7%BC%96%E7%9C%8B%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
