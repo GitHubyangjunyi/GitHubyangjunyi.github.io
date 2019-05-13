@@ -51,7 +51,7 @@
     },
     "datePublished": "2019-05-11",
     "description": "",
-    "wordCount":  0 
+    "wordCount":  916 
   }
 </script>
 
@@ -193,6 +193,323 @@
 
   <div class="container content">
   
+
+<h2 id="指针与引用的区别">指针与引用的区别</h2>
+
+<pre><code>1. 引用是别名这是C++规定的语义,引用必须初始化
+   1. int &amp;r;   //没有初始化不合法
+   2. int *p;   //合法
+2. 根据上一条规则引用不能为空而指针可以为空,而且经过操作系统进程空间页表映射的配合,从地址0开始到64KB处映射为空PAGE_NOACCESS
+   至于64KB限长是为了防止0地址结构体指针加偏移通过空指针验证导致意外写
+</code></pre>
+
+<pre><code class="language-C">    void test_p(int* p)
+    {
+        if(p != nullptr)
+        *p = 3;
+        return;
+    }
+    void test_r(int&amp; r)
+    {
+        r = 3;
+        return;
+    }
+</code></pre>
+
+<pre><code>1. 指针可以随时改变指向,但引用不可以
+</code></pre>
+
+<pre><code class="language-C">    int a = 1;
+    int b = 2;
+
+    int &amp;r = a;    //初始化引用r指向变量a
+    int *p = &amp;a;   //初始化指针p指向变量a
+
+    p = &amp;b;        //指针p指向了变量b
+    r = b;         //引用r依然指向a，但a的值变成了b
+</code></pre>
+
+<h2 id="引用的使用场景">引用的使用场景</h2>
+
+<pre><code>1. 引用型参数
+   一般使用const reference参数作为只读形参,可以避免参数拷贝还可以获得与值参数一样的调用方式
+</code></pre>
+
+<pre><code class="language-C">    void test(const vector&lt;int&gt; &amp;data)
+    {
+        //...
+    }
+    int main()
+    {
+        vector&lt;int&gt; data{1,2,3,4,5,6,7,8};
+        test(data);
+    }
+</code></pre>
+
+<pre><code>2. 引用型返回值
+   C++提供重载运算符的功能,我们在重载某些操作符的时候使用引用型返回值可以获得跟该操作符原来语法相同的调用方式
+   保持了操作符语义的一致性,一个例子就是operator []操作符,这个操作符一般需要返回一个引用对象才能正确的被修改
+</code></pre>
+
+<pre><code class="language-C">    vector&lt;int&gt; v(10);
+    v[5] = 10;    //[]操作符返回引用然后vector对应元素才能被修改
+                  //如果[]操作符不返回引用而是指针的话,赋值语句则需要这样写
+    *v[5] = 10;   //这种书写方式完全不符合我们对[]调用的认知容易产生误解
+</code></pre>
+
+<h2 id="指针与引用的性能差距">指针与引用的性能差距</h2>
+
+<pre><code>要知道使用指针与使用引用之间的性能差距需要查看编译器生成的汇编代码差别在哪里,相当于查看机器码到底有什么差别
+首先MSVC编译环境下:
+</code></pre>
+
+<pre><code class="language-C">    void test_p(int* p)
+    {
+        *p = 3;
+        return;
+    }
+    void test_r(int&amp; r)
+    {
+        r = 3;
+        return;
+    }
+    int main()
+    {
+        int x = 10;
+        int * a = &amp;x;
+        int&amp; b = x;
+        test_p(a);
+        test_r(b);
+        return 0;
+    }
+</code></pre>
+
+<pre><code class="language-ASM">    26: int main()
+    27: {
+40 55                push        rbp
+57                   push        rdi
+48 81 EC 48 01 00 00 sub         rsp,148h  
+48 8D 6C 24 20       lea         rbp,[rsp+20h]  
+48 8B FC             mov         rdi,rsp  
+B9 52 00 00 00       mov         ecx,52h  
+B8 CC CC CC CC       mov         eax,0CCCCCCCCh  
+F3 AB                rep stos    dword ptr [rdi]  
+48 8B 05 23 28 01 00 mov         rax,qword ptr [__security_cookie (07FF6CBCE5018h)]  
+48 33 C5             xor         rax,rbp  
+48 89 85 18 01 00 00 mov         qword ptr [rbp+118h],rax  
+48 8D 0D 05 88 01 00 lea         rcx,[__C64E1C7C_aaaareadme@cpp (07FF6CBCEB00Bh)]  
+E8 2B E9 FF FF       call        __CheckForDebuggerJustMyCode (07FF6CBCD1136h)  
+    28:     int x = 10;
+C7 45 04 0A 00 00 00 mov         dword ptr [x],0Ah  
+    29:     int * a = &amp;x;
+48 8D 45 04          lea         rax,[x]
+48 89 45 28          mov         qword ptr [a],rax  
+    30:     int&amp; b = x;
+48 8D 45 04          lea         rax,[x]  
+48 89 45 48          mov         qword ptr [b],rax  
+    31:     test_p(a);
+48 8B 4D 28          mov         rcx,qword ptr [a]  
+E8 B8 F0 FF FF       call        test_p (07FF6CBCD18E3h)  
+    32:     test_r(b);
+48 8B 4D 48          mov         rcx,qword ptr [b]  
+E8 AA F0 FF FF       call        test_r (07FF6CBCD18DEh)
+</code></pre>
+
+<pre><code class="language-ASM">    void test_p(int* p)
+    16: {
+48 89 4C 24 08       mov         qword ptr [rsp+8],rcx  
+55                   push        rbp  
+57                   push        rdi  
+48 81 EC E8 00 00 00 sub         rsp,0E8h  
+48 8D 6C 24 20       lea         rbp,[rsp+20h]  
+48 8B FC             mov         rdi,rsp  
+B9 3A 00 00 00       mov         ecx,3Ah  
+B8 CC CC CC CC       mov         eax,0CCCCCCCCh  
+F3 AB                rep stos    dword ptr [rdi]  
+48 8B 8C 24 08 01 00 00 mov         rcx,qword ptr [rsp+108h]  
+48 8D 0D 9A 89 01 00 lea         rcx,[__C64E1C7C_aaaareadme@cpp (07FF6CBCEB00Bh)]  
+E8 C0 EA FF FF       call        __CheckForDebuggerJustMyCode (07FF6CBCD1136h)  
+    17:     *p = 3;
+48 8B 85 E0 00 00 00 mov         rax,qword ptr [p]  
+C7 00 03 00 00 00    mov         dword ptr [rax],3  
+    18:     return;
+    19: }
+48 8D A5 C8 00 00 00 lea         rsp,[rbp+0C8h]  
+    18:     return;
+    19: }
+5F                   pop         rdi  
+5D                   pop         rbp  
+C3                   ret  
+</code></pre>
+
+<pre><code class="language-ASM">20: void test_r(int&amp; r)
+    21: {
+48 89 4C 24 08       mov         qword ptr [rsp+8],rcx  
+55                   push        rbp  
+57                   push        rdi  
+48 81 EC E8 00 00 00 sub         rsp,0E8h  
+48 8D 6C 24 20       lea         rbp,[rsp+20h]  
+48 8B FC             mov         rdi,rsp  
+B9 3A 00 00 00       mov         ecx,3Ah  
+B8 CC CC CC CC       mov         eax,0CCCCCCCCh  
+F3 AB                rep stos    dword ptr [rdi]  
+48 8B 8C 24 08 01 00 00 mov         rcx,qword ptr [rsp+108h]  
+48 8D 0D 8A 88 01 00 lea         rcx,[__C64E1C7C_aaaareadme@cpp (07FF6CBCEB00Bh)]  
+E8 B0 E9 FF FF       call        __CheckForDebuggerJustMyCode (07FF6CBCD1136h)  
+    22:     r = 3;
+48 8B 85 E0 00 00 00 mov         rax,qword ptr [r]  
+C7 00 03 00 00 00    mov         dword ptr [rax],3  
+    23:     return;
+    24: }
+48 8D A5 C8 00 00 00 lea         rsp,[rbp+0C8h]  
+    23:     return;
+    24: }
+5F                   pop         rdi  
+5D                   pop         rbp  
+C3                   ret  
+</code></pre>
+
+<pre><code>上面的代码处于调试模式下,所以会掺杂一些调试用的代码以及用来实现&quot;钩子&quot;机制的机器码填充
+以及将新分配的栈空间的每个字节都初始化为CC的调试器支持代码片段
+上面的代码真是对新手很不友好啊
+再来看看Linux下g++编译生成的友好的汇编代码
+</code></pre>
+
+<pre><code class="language-ASM">    .file   &quot;x.cpp&quot;
+    .text
+    .globl  _Z6test_pPi
+    .type   _Z6test_pPi, @function
+_Z6test_pPi:                    ;指针版函数
+.LFB0:
+    .cfi_startproc
+    pushq   %rbp                ;保存调用者栈基地址
+    .cfi_def_cfa_offset 16
+    .cfi_offset 6, -16
+    movq    %rsp, %rbp          ;定位此函数的栈基地址
+    .cfi_def_cfa_register 6
+    movq    %rdi, -8(%rbp)      ;将调用者传入的参数放入-8(%rbp)
+    movq    -8(%rbp), %rax      ;将栈-8(%rbp)处的数据送入rax
+    movl    $3, (%rax)          ;取rax中的内容作为地址向其写入3,相当于*p* = 3;
+    nop                         ;空指令
+    popq    %rbp                ;弹出调用者栈基地址到rbp
+    .cfi_def_cfa 7, 8
+    ret                         ;函数返回return
+    .cfi_endproc
+.LFE0:
+    .size   _Z6test_pPi, .-_Z6test_pPi
+    .globl  _Z6test_rRi
+    .type   _Z6test_rRi, @function
+_Z6test_rRi:                    ;引用版函数
+.LFB1:
+    .cfi_startproc
+    pushq   %rbp                ;保存调用者栈基地址
+    .cfi_def_cfa_offset 16
+    .cfi_offset 6, -16
+    movq    %rsp, %rbp          ;定位此函数的栈基地址
+    .cfi_def_cfa_register 6
+    movq    %rdi, -8(%rbp)      ;将调用者传入的参数放入-8(%rbp)
+    movq    -8(%rbp), %rax      ;将栈-8(%rbp)处的数据送入rax
+    movl    $3, (%rax)          ;取rax中的内容作为地址向其写入3,相当于r = 3;
+    nop                         ;空指令
+    popq    %rbp                ;弹出调用者栈基地址到rbp
+    .cfi_def_cfa 7, 8
+    ret                         ;函数返回return
+    .cfi_endproc
+.LFE1:
+    .size   _Z6test_rRi, .-_Z6test_rRi
+    .globl  main
+    .type   main, @function
+main:                           ;这里是由操作系统调用的main函数
+.LFB2:
+    .cfi_startproc
+    pushq   %rbp                ;保存调用者栈基地址
+    .cfi_def_cfa_offset 16
+    .cfi_offset 6, -16
+    movq    %rsp, %rbp          ;定位此函数的栈基地址
+    .cfi_def_cfa_register 6
+    subq    $32, %rsp           ;开辟32字节栈空间
+    movl    $10, -20(%rbp)      ;在栈-20(%rbp)处放入10,相当于int x = 10;x的地址就是栈-20(%rbp)处
+    leaq    -20(%rbp), %rax     ;leaq将代表栈-20(%rbp)处的地址值放入rax
+    movq    %rax, -8(%rbp)      ;将rax值放入栈-8(%rbp)处,相当于int * a = &amp;x;指针a位于栈-8(%rbp)处,存放的是x的地址栈-20(%rbp)
+    leaq    -20(%rbp), %rax     ;leaq将栈-20(%rbp)地址值放入rax,相当于获得x的地址值
+    movq    %rax, -16(%rbp)     ;将x得地址值放入栈-16(%rbp)处,相当于int&amp; b = x;
+    movq    -8(%rbp), %rax      ;将指针a存放的值放入rax
+    movq    %rax, %rdi          ;将rax的值放入rdi进行函数调用
+    call    _Z6test_pPi         ;调用指针版函数
+    movq    -16(%rbp), %rax     ;将引用b存放的值放入rax
+    movq    %rax, %rdi          ;将rax的值放入rdi进行函数调用
+    call    _Z6test_rRi         ;调用引用版函数
+    movl    $0, %eax            ;main函数正常执行
+    leave                       ;收尾工作
+    .cfi_def_cfa 7, 8
+    ret                         ;函数返回
+    .cfi_endproc
+.LFE2:
+    .size   main, .-main
+    .ident  &quot;GCC: (Debian 7.3.0-19) 7.3.0&quot;
+    .section    .note.GNU-stack,&quot;&quot;,@progbits
+</code></pre>
+
+<p>还是有点长的话开个优化试试:</p>
+
+<pre><code class="language-ASM">    .file   &quot;x.cpp&quot;
+    .text
+    .p2align 4,,15
+    .globl  _Z6test_pPi
+    .type   _Z6test_pPi, @function
+_Z6test_pPi:
+.LFB0:
+    .cfi_startproc
+    movl    $3, (%rdi)
+    ret
+    .cfi_endproc
+.LFE0:
+    .size   _Z6test_pPi, .-_Z6test_pPi
+    .p2align 4,,15
+    .globl  _Z6test_rRi
+    .type   _Z6test_rRi, @function
+_Z6test_rRi:
+.LFB1:
+    .cfi_startproc
+    movl    $3, (%rdi)
+    ret
+    .cfi_endproc
+.LFE1:
+    .size   _Z6test_rRi, .-_Z6test_rRi
+    .section    .text.startup,&quot;ax&quot;,@progbits
+    .p2align 4,,15
+    .globl  main
+    .type   main, @function
+main:
+.LFB2:
+    .cfi_startproc
+    xorl    %eax, %eax
+    ret
+    .cfi_endproc
+.LFE2:
+    .size   main, .-main
+    .ident  &quot;GCC: (Debian 7.3.0-19) 7.3.0&quot;
+    .section    .note.GNU-stack,&quot;&quot;,@progbits
+</code></pre>
+
+<p>仔细一看你会发现指针参数和引用参数两个版本的函数编译出来的汇编代码是一样的
+而且编译器聪明到知道你写的都是垃圾代码,给你优化得连函数调用都没了,也就是说你的main函数成了这样:</p>
+
+<pre><code class="language-C">    int main()
+    {
+        return 0;
+    }
+</code></pre>
+
+<p>这还只是O1/O2级别的优化而已
+提取出的两个函数编译后的汇编代码如下:</p>
+
+<pre><code class="language-ASM">    movl    $3, (%rdi)  ;根据GNU函数调用约定,rdi作为第一参数寄存器,存放的是变量的地址
+    ret                 ;加上括号进行寻址就相当于将3写入存放变量的那个地址
+</code></pre>
+
+<p>如果你在运行时查看内存中的机器码不一致是因为链接或装载后指令被修正了,但灵魂是一样的</p>
+
 </div>
 
 

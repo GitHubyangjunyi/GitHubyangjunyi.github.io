@@ -19,7 +19,7 @@
       <pubDate>Sat, 11 May 2019 12:59:37 +0800</pubDate>
       <author>1209032479@qq.com (杨俊艺)</author>
       <guid>https://GitHubyangjunyi.github.io/cplusplus/%E4%BB%8E%E6%B1%87%E7%BC%96%E7%9C%8B%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
-      <description></description>
+      <description>指针与引用的区别 1. 引用是别名这是C++规定的语义,引用必须初始化 1. int &amp;amp;r; //没有初始化不合法 2. int *p; //合法 2. 根据上一条规则引用不能为空而指针可以为空,而且经过操作系统进程空间页表映射的配合,从地址0开始到64KB处映射为空PAGE_NOACCESS 至于64KB限长是为了防止0地址结构体指针加偏移通过空指针验证导致意外写  void test_p(int* p) { if(p != nullptr) *p = 3; return; } void test_r(int&amp;amp; r) { r = 3; return; }  1. 指针可以随时改变指向,但引用不可以  int a = 1; int b = 2; int &amp;amp;r = a; //初始化引用r指向变量a int *p = &amp;amp;a; //初始化指针p指向变量a p = &amp;amp;b; //指针p指向了变量b r = b; //引用r依然指向a，但a的值变成了b  引用的使用场景 1. 引用型参数 一般使用const reference参数作为只读形参,可以避免参数拷贝还可以获得与值参数一样的调用方式  void test(const vector&amp;lt;int&amp;gt; &amp;amp;data) { //.</description>
     </item>
     
   </channel>
